@@ -1,0 +1,69 @@
+{% extends 'base.html' %}
+
+
+
+{% block content %}
+{{ super() }}
+<form method="POST" onsubmit="return checkPasswords()">
+
+<p>Ваше юзернейм:</p>
+<input type="text" name="username" value="">
+<p>Пароль:</p>
+<input type="password" name="password1" id="password1" value="">
+<p>Подтвердите пароль:</p>
+<input type="password" name="password2" id="password2" value=""><br><br>
+<input type="submit" value="➜">
+{% for cat, msg in get_flashed_messages(True) %}
+<div class="flash {{ cat }}">{{ msg }}</div>
+{% endfor %}
+
+</form>
+
+
+<p id="error" style="color: red;"></p>
+
+<script>
+function checkPasswords() {
+    let pass = document.getElementById("password1").value;
+    let conf = document.getElementById("password2").value;
+    let error = document.getElementById("error");
+
+    if (pass !== conf) {
+        error.textContent = "Пароли не совпадают, котёнок 💔";
+        return false;
+    }
+
+    return true;
+}
+</script>
+
+
+<style>
+
+div[type="flash"] {
+    color: aliceblue;
+}
+
+input[type="text"] {
+    background-color: blueviolet;
+    border-color: rgb(34, 2, 65);
+}
+
+input[type="password"] {
+    background-color: blueviolet;
+    border-color: rgb(34, 2, 65);
+}
+
+
+
+input[type="submit"] {
+    color: rgb(0, 0, 0);
+    background-color: blueviolet;
+    border-color: rgb(24, 3, 44);
+}
+</style>
+
+
+
+{% endblock %}
+

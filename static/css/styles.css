@@ -5,41 +5,8 @@ body {
 p {
     color: rgb(74, 13, 109);
 }
-.site-header h1 {
-    color: rgb(48, 9, 110);
-}
-.index h1{
-    color: rgb(48, 9, 110);
-}
-
-
-.menu a {
-    color: rgb(48, 9, 110);
-    text-decoration: none;
-}
-
-.menu hr {
-    border-color: #140230;
-}
-
-.btn-outline {
-    display: inline-block;
-    padding: 12px 30px;
-    background: transparent;
-    color: #3b0591;
-    text-decoration: none;
-    border: 2px solid #3b07b4;
-    border-radius: 8px;
-    font-family: 'Arial', sans-serif;
-    font-weight: bold;
-    text-align: center;
-    transition: all 0.3s ease;
-    position: relative;
-    overflow: hidden;
-}
-
-.btn-outline:hover {
-    color: white;
-    background: #5602c4;
-    transform: scale(1.05);
+.flash {
+    list-style: none;
+    padding: 0;
+    margin: 10px 0;
 }
