@@ -1,18 +1,21 @@
 from flask import Flask, render_template, request, url_for, session, flash
 import os
 import sqlite3
+from dotenv import load_dotenv
 
-DATABASE = 'tmp/flsite.db'
+load_dotenv()
+
+
+DATABASE = os.getenv('DATABASE')
 DEBUG = True
-SECRET_KEY = 'Jvtyio8T8352#$#@$NRGJff34!#$^%^G%Q%^#Q$gqa3w4f'
-
+SECRET_KEY = os.getenv('SECRET_KEY')
+print(SECRET_KEY)
 
 app = Flask(__name__)
 app.config.from_object(__name__)
 app.config.update(dict(DATABASE=os.path.join(app.root_path, 'flsite.db')))
 
 
-app.config['SECRET KEY'] = 'ba151a06598733474d7cacdfdc2fee920a67433e'
 
 
 #  --- DEFS  ---
