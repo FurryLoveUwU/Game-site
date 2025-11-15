@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+
+<link type="text/css" href="{{ url_for('static', filename='css/styles.css')}}" rel="stylesheet" />
+
+
+<head>
+    {% block title -%}
+    {% if title %}
+            <title>Sun Way - {{title}}</title>
+    {% else %}
+            <title>Sun Way</title>
+    {% endif %}
+    {% endblock %}
+</head>
+
+
+
+
+
+<body>
+{% block content -%}
+<header class="site-header">
+    <h1>🌸Мвряу..🐾</h1>
+    <nav class="menu">
+        <a href="" class="btn-outline">Главная страница🎆</a>
+        
+        <hr>
+    </nav>
+</header>
+
+{% endblock %}
+</body>
+
+</html>
