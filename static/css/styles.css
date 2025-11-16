@@ -5,8 +5,36 @@ body {
 p {
     color: rgb(74, 13, 109);
 }
-.flash {
-    list-style: none;
-    padding: 0;
-    margin: 10px 0;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0 1000px blueviolet inset !important;
+            box-shadow: 0 0 0 1000px blueviolet inset !important;
+
+    -webkit-text-fill-color: #000000 !important;
+    caret-color: rgb(0, 0, 0) !important;
+
+    border: 1px solid rgb(34, 2, 65) !important;
+    border-radius: 10px !important;
 }
+
+
+input {
+    transition: background-color 9999s ease-in-out 0s !important;
+}
+
+
+
+

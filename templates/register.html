@@ -4,20 +4,24 @@
 
 {% block content %}
 {{ super() }}
-<form method="POST" onsubmit="return checkPasswords()">
+<form class="register" method="POST" onsubmit="return checkPasswords()">
 
 <p>Ваше юзернейм:</p>
 <input type="text" name="username" value="">
 <p>Пароль:</p>
 <input type="password" name="password1" id="password1" value="">
 <p>Подтвердите пароль:</p>
-<input type="password" name="password2" id="password2" value=""><br><br>
+<input type="password" name="password2" id="password2" value="">
+<p>Введите вашу почту:</p>
+<input type="email" name="mail" id="mail" value="">
+<br><br>
 <input type="submit" value="➜">
 {% for cat, msg in get_flashed_messages(True) %}
 <div class="flash {{ cat }}">{{ msg }}</div>
 {% endfor %}
 
 </form>
+<!-- На выходе - [username, password1, mail] -->
 
 
 <p id="error" style="color: red;"></p>
@@ -40,11 +44,27 @@ function checkPasswords() {
 
 <style>
 
+
+.register {
+    padding: 20px;
+    border: 2px solid #22004e;
+    border-radius: 20px;
+    background: #000000;
+    max-width: 400px; /* чтобы не разъезжалась */
+    margin: 20px left; /* центровка */
+    box-sizing: border-box;
+}
+
+
 div[type="flash"] {
-    color: aliceblue;
+    color: rgb(119, 0, 255);
 }
 
 input[type="text"] {
+    background-color: blueviolet;
+    border-color: rgb(34, 2, 65);
+}
+input[type="email"] {
     background-color: blueviolet;
     border-color: rgb(34, 2, 65);
 }
@@ -53,7 +73,27 @@ input[type="password"] {
     background-color: blueviolet;
     border-color: rgb(34, 2, 65);
 }
+.flash {
+    max-width: 100%;
+    color: rgb(255, 255, 255);
+    padding: 12px 18px;
+    margin: 10px 0;
+    border: 2px solid #000000; /* цвет рамки */
+    border-radius: 12px;       /* вот это делает углы округлыми */
+    background: #1b0138;       /* нежный фон */
+    font-weight: 500;
+    animation: fadeIn 0.3s ease;
+}
 
+.flash.succces {
+    border: 2px solid rgb(73, 0, 245);
+    border-radius: 12px; 
+    color: rgb(255, 255, 255);
+
+
+
+    /* background-color: rgb(73, 0, 245); */
+}
 
 
 input[type="submit"] {
@@ -61,6 +101,29 @@ input[type="submit"] {
     background-color: blueviolet;
     border-color: rgb(24, 3, 44);
 }
+
+
+input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0 1000px blueviolet inset !important;
+            box-shadow: 0 0 0 1000px blueviolet inset !important;
+
+    -webkit-text-fill-color: #000000 !important;
+    caret-color: rgb(0, 0, 0) !important;
+
+    border: 1px solid rgb(34, 2, 65) !important;
+    border-radius: 10px !important;
+}
+
+
+input {
+    transition: background-color 9999s ease-in-out 0s !important;
+}
+
+
+
+
+
+
 </style>
 
 
