@@ -48,8 +48,31 @@ create_db()
 def home():
     return render_template("index.html")
 
-@app.route("/login")
+@app.route("/login", methods=["GET", "POST"])
 def login():
+    db = get_db()
+    dbase = FDataBase(db)
+    if request.method == "POST":
+
+        if len(request.form["username"]) > 2 and len(request.form['password']) > 2:
+            try:
+                unhash_pass = request.form["password"]
+                username = request.form["username"]
+                res = dbase.login_account(username, unhash_pass)
+
+                if res == 100:
+                    flash("Пользователя не существует. Проверь имя или почту.")
+                elif res == 300:
+                    flash("Пароль введен не верно.")
+                elif res == 200:
+                    flash("Вход успешен")
+                    session["username"] = username
+                else:
+                    
+                    flash(f"Неизвестная ошибка {res}")
+
+            except:
+                pass
     return render_template("login.html")
 
 @app.route("/register", methods=['POST', 'GET'])
@@ -90,7 +113,9 @@ def register():
         print(request.form)
     return render_template("register.html")
 
-
+@app.route("/profile")
+def profile():
+    return render_template("profile.html")
 
 if __name__ == "__main__":
     app.run(debug=True)

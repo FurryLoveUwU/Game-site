@@ -1,6 +1,8 @@
 
 import sqlite3
 from flask import url_for
+from argon2 import PasswordHasher
+
 
 
 class FDataBase:
@@ -44,4 +46,30 @@ class FDataBase:
             
         
 
-    
+    def login_account(self, username, password):
+        
+        
+        self.__cur.execute("SELECT * FROM users WHERE username = ?", (username,))
+        
+        res = self.__cur.fetchone()
+        
+        if res == None:
+            
+            return 100
+            # пользователя не существует
+        else:
+            
+            hashed_BD_pass = res["password"]
+            ph = PasswordHasher()
+            try:
+                
+                ph.verify(hashed_BD_pass, password)
+                return 200
+                # успех
+            except:
+                
+                return 300
+                # не правильно введенный пароль
+            
+        
+        
